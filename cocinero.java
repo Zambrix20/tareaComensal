@@ -25,11 +25,11 @@ public class cocinero extends Thread {
         
         int i = 0;        
         while (i < this.actVeces) {
-            lleno.acquireUninterruptibly();
-            buffer.cocinar(6);
-            i++;
-            buffer.imprimir();
-            vacio.release();
+            lleno.acquireUninterruptibly(); //Bloqueamos al cocinero
+            buffer.cocinar(6); //Se cocina determinada cantidad de comida en el buffer 
+            i++; //Se hace la comparacion
+            buffer.imprimir(); //Imprimimos el buffer
+            vacio.release(); //Liberamos al miembroTribu
         }
     }   
     

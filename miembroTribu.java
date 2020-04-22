@@ -28,8 +28,8 @@ public class miembroTribu extends Thread {
             
             exclMutua.acquireUninterruptibly();
             if (buffer.buffer.isEmpty()) { // Si el buffer esta vacio
-                lleno.release();
-                vacio.acquireUninterruptibly();
+                lleno.release();// Liberamos Al cocinero
+                vacio.acquireUninterruptibly();//Bloqueamos al miembroTribu
                 //Cocinero hizo
                 System.out.println("El Cocinero hizo esta cantidad de comida (Porciones): " + buffer.buffer.size());
                 i++;
@@ -40,27 +40,14 @@ public class miembroTribu extends Thread {
                 //vacio.acquireUninterruptibly(); // Bloquean comer                 
             }
             
-            if(buffer.comer()){
+            if(buffer.comer()){ //Para ver el miembroTribu que come
                 //El miembro come
                 System.out.println("El Miembro de la Tribu se sirve con este tamaño: " + buffer.buffer.size());
                 //buffer.imprimir();
                 //i++;
             }
-            //vacio.acquireUninterruptibly();
             //buffer.imprimir();
-            exclMutua.release();
-            
-            
-            /*vacio.acquireUninterruptibly();
-            exclMutua.acquireUninterruptibly();
-            if (buffer.buffer.size() == 0) {
-                i++;                
-            }
-            buffer.imprimir();
-            exclMutua.release();
-            vacio.release();
-            */
-            
+            exclMutua.release();            
         }
     }
 }

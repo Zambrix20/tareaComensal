@@ -28,10 +28,8 @@ public class perol {
     public boolean comer(){
         if (this.buffer.size() > 0) {
             //System.out.print("Comiendo");
-            this.buffer.remove(this.buffer.size()-1);
-            
-            //System.out.print("Comiendo");
-            
+            this.buffer.remove(this.buffer.size()-1);            
+            //System.out.print("Comiendo");            
             return true;
         }
         
@@ -46,8 +44,7 @@ public class perol {
                 System.out.printf("%d",this.buffer.get(i));
             } catch (Exception e) {
                 
-            }
-            
+            }            
             //System.out.printf("%d",this.buffer.get(i));            
         }
         System.out.println(" ");
