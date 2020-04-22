@@ -23,20 +23,44 @@ public class miembroTribu extends Thread {
     @Override
     public void run (){
         int i = 0;
-        int n = 0;
         
         while (i < this.actVeces) {
-            // *
+            
             exclMutua.acquireUninterruptibly();
-            if (buffer.comer()) { // Si el buffer esta lleno, empiezan a comer
+            if (buffer.buffer.isEmpty()) { // Si el buffer esta vacio
+                lleno.release();
+                vacio.acquireUninterruptibly();
+                //Cocinero hizo
+                System.out.println("El Cocinero hizo esta cantidad de comida (Porciones): " + buffer.buffer.size());
+                i++;
+                
+                //System.out.print("Miembro comiendo");                
+                //lleno.release(); //Despertar al cocinero
+                //buffer.cocinar(1);
+                //vacio.acquireUninterruptibly(); // Bloquean comer                 
+            }
+            
+            if(buffer.comer()){
+                //El miembro come
+                System.out.println("El Miembro de la Tribu se sirve con este tamaño: " + buffer.buffer.size());
+                //buffer.imprimir();
+                //i++;
+            }
+            //vacio.acquireUninterruptibly();
+            //buffer.imprimir();
+            exclMutua.release();
+            
+            
+            /*vacio.acquireUninterruptibly();
+            exclMutua.acquireUninterruptibly();
+            if (buffer.buffer.size() == 0) {
                 i++;                
-            }else { // sino se pudo comer
-                lleno.release(); //Despertar al cocinero
-                vacio.acquireUninterruptibly(); // Bloquean comer 
-                // buffer.comer();
             }
             buffer.imprimir();
-            exclMutua.release();        
+            exclMutua.release();
+            vacio.release();
+            */
+            
         }
     }
 }

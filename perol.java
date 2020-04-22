@@ -14,28 +14,41 @@ public class perol {
     
     //Metodo para cocinero
     public boolean cocinar (int valor){
-        this.buffer.add(valor);
-        
+        //System.out.print("Cocinando");
+        System.out.print("Esta es la comida cocinada: ");
+        for (int i = 0; i < valor; i++) { // Para que el cocinero cocine determinada contidad de comida (Porciones)
+            // System.out.println("Esta es la comida cocinada");
+            buffer.add(1);
+        }
+        //System.out.print("Cocinando");
         return true;
     }
     
     //Metodo para miembroTribu
     public boolean comer(){
-        if (this.buffer.size() >0 ) {
+        if (this.buffer.size() > 0) {
+            //System.out.print("Comiendo");
             this.buffer.remove(this.buffer.size()-1);
+            
+            //System.out.print("Comiendo");
+            
             return true;
-        }        
-        return false;                
+        }
+        
+        //System.out.println("No hay comida");
+        return false;        
     }
     
     // Metodo para imprimir el perol
     public void imprimir(){
-        for (int i = 0; i < this.buffer.size(); i++) {
+        for (int i = 0; i < buffer.size(); i++) {
             try {
-                System.out.printf("%d",this.buffer.get(i));                
+                System.out.printf("%d",this.buffer.get(i));
             } catch (Exception e) {
                 
             }
+            
+            //System.out.printf("%d",this.buffer.get(i));            
         }
         System.out.println(" ");
         

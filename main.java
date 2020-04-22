@@ -12,14 +12,14 @@ public class main {
         
         // Declaramos 3 semaforos
         Semaphore exclMutua = new Semaphore(1, true);
-        Semaphore lleno = new Semaphore(10,true);
-        Semaphore vacio = new Semaphore(10,true);
+        Semaphore lleno = new Semaphore(0,true);
+        Semaphore vacio = new Semaphore(0,true);
         
         // Declaramos el que consume
-        miembroTribu memTrib = new miembroTribu(buffer, exclMutua, lleno, vacio, 10);
+        miembroTribu memTrib = new miembroTribu(buffer, exclMutua, lleno, vacio, 3);
         
         // Declaramos el que cocina
-        cocinero chef = new cocinero(buffer, lleno, vacio, 10);
+        cocinero chef = new cocinero(buffer, lleno, vacio, 2);
         
         vacio.drainPermits();
         

@@ -26,7 +26,7 @@ public class cocinero extends Thread {
         int i = 0;        
         while (i < this.actVeces) {
             lleno.acquireUninterruptibly();
-            buffer.cocinar(1);
+            buffer.cocinar(6);
             i++;
             buffer.imprimir();
             vacio.release();
